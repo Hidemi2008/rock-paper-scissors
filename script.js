@@ -70,12 +70,15 @@ for (let n = 0; n <5; n++){
     let humanScore = 0
     let computerScore = 0
     let empate = 0
+
     
     let rodada = playRound(escolhaHumana,escolhaComputer)
+
     
     console.log(humanScore)
     console.log(computerScore)
     console.log(empate)
+
 
     if (humanScore > 2){
         console.log(`Você empatou, tente novamente!!!`)
@@ -98,9 +101,36 @@ for (let n = 0; n <5; n++){
         }
     }
 
-}}
 
+
+}}
 console.log(playGame())
+
+let humanScore = 0
+let computerScore = 0
+let empate = 0
+
+if (humanScore > 2){
+    console.log(`Você empatou, tente novamente!!!`)
+    
+    
+}else{
+    if(computerScore > 2){
+        console.log(`Você empatou, tente novamente!!!`)
+        
+    }else{
+        if(humanScore === 2 && computerScore === 2 && empate === 1){
+            console.log(`Você empatou, tente novamente!!!`)
+            
+        }else{
+            if(empate > 2){
+                    console.log(`Você empatou, tente novamente!!!`)
+                    
+            }
+        }
+    }
+}
+
 /*
 if (humanScore > 2){
     console.log(`Parabéns você venceu!!!`)
