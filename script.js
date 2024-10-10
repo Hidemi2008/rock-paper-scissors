@@ -1,3 +1,53 @@
+let escolha1 = document.querySelector('#escolha1')
+let escolha2 = document.querySelector('#escolha2')
+let escolha3 = document.querySelector('#escolha3')
+
+let espaco = document.querySelector('div')
+
+
+escolha1.addEventListener("click", () =>{
+    let escolha = escolha1.textContent = "PEDRA"
+    console.log(escolha)
+    let escolhaHumana = getHumanChoice(escolha)
+    console.log(escolhaHumana)
+    
+    let escolhaComputer = getCommputerChoice(0,3)
+
+    let game = playRound(escolhaHumana,escolhaComputer)
+    console.log(game)
+
+    let div = document.createElement('div')
+
+    div.appendChild(espaco)
+    div.textContent = game
+
+
+})
+escolha2.addEventListener("click", () =>{
+    let escolha = escolha2.textContent = "TESOURA"
+    console.log(escolha)
+    let escolhaHumana = getHumanChoice(escolha)
+    console.log(escolhaHumana)
+
+    let escolhaComputer = getCommputerChoice(0,3)
+
+    let game = playRound(escolhaHumana,escolhaComputer)
+})
+escolha3.addEventListener("click", () =>{
+    let escolha = escolha3.textContent = "PAPEL"
+    console.log(escolha)
+    let escolhaHumana = getHumanChoice(escolha)
+    console.log(escolhaHumana)
+
+    let escolhaComputer = getCommputerChoice(0,3)
+
+    let game = playRound(escolhaHumana,escolhaComputer)
+})
+
+
+
+
+
 /*Criação de um número aleatorio e sua escolha. */
     function getCommputerChoice (min, max){
         min = Math.ceil(min);
@@ -22,11 +72,12 @@
             if(escolha === "TESOURA"){
                 return "Tesoura"
             }else{
+                if(escolha === "PAPEL"){
                 return "Papel"
             }
         }
     }
-    
+}
     
     /*Criar a primeira rodada do jogo. */
     function playRound (humanChoise, computerChoise) {
@@ -36,24 +87,29 @@
 
     
     if(humanChoise === "TESOURA" && computerChoise === "PAPEL"){
-        return humanScore++
+        return "Você venceu, sua pontuação" + humanScore++
     }else{
         if(humanChoise === "PEDRA" && computerChoise === "TESOURA"){
-            return humanScore++
+            return "Você venceu, sua pontuação" + humanScore++
         }else{
             if(humanChoise === "PAPEL" && computerChoise === "PEDRA"){
-                return humanScore++
+                return "Você venceu, sua pontuação" + humanScore++
             }else{
                 if(humanChoise === computerChoise){
-                    return empate++
+                    return "Você empatou, a pontuacão ficou" + empate++
                 }else{
-                    return computerScore++
+                    return "Você perdeu, a pontuação do seu rival " +  computerScore++
                 }
             }
         }
     }
     }
-/*Criar 5 rodadas do jogo. */
+
+    let humanScore = 0
+    let computerScore = 0
+    let empate = 0
+    /*
+//Criar 5 rodadas do jogo. 
     function playGame (num){
         for(let n =0; n < num; n++){
             let escolhaComputer = getCommputerChoice(0,3)
@@ -87,7 +143,7 @@
         }
 
     }
-/*
+
     let escolhaComputer = getCommputerChoice(0,3)
     console.log(escolhaComputer)
     
@@ -98,7 +154,7 @@
     console.log(escolhaHumana)
 
         let rodada = playRound(escolhaHumana,escolhaComputer)
-    */
+    
     
     let humanScore = 0
     let computerScore = 0
@@ -112,3 +168,4 @@
     let play = playGame(5)
     
 
+*/
