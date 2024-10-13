@@ -2,49 +2,94 @@ let escolha1 = document.querySelector('#escolha1')
 let escolha2 = document.querySelector('#escolha2')
 let escolha3 = document.querySelector('#escolha3')
 
-let espaco = document.querySelector('div')
+let espaco = document.querySelector('#conteiner')
 
+for(let n = 0; n < 5; n++){
 
-escolha1.addEventListener("click", () =>{
-    let escolha = escolha1.textContent = "PEDRA"
-    console.log(escolha)
-    let escolhaHumana = getHumanChoice(escolha)
-    console.log(escolhaHumana)
+    escolha1.addEventListener("click", () =>{
+        let escolha = "Pedra"
+        let escolhaHumana = getHumanChoice(escolha)
+        let p1 = document.createElement('p')
+        
+        p1.textContent = "A sua escolha foi " + escolhaHumana
+        espaco.appendChild(p1)
     
-    let escolhaComputer = getCommputerChoice(0,3)
-
-    let game = playRound(escolhaHumana,escolhaComputer)
-    console.log(game)
-
-    let div = document.createElement('div')
-
-    div.appendChild(espaco)
-    div.textContent = game
-
-
-})
-escolha2.addEventListener("click", () =>{
-    let escolha = escolha2.textContent = "TESOURA"
-    console.log(escolha)
-    let escolhaHumana = getHumanChoice(escolha)
-    console.log(escolhaHumana)
-
-    let escolhaComputer = getCommputerChoice(0,3)
-
-    let game = playRound(escolhaHumana,escolhaComputer)
-})
-escolha3.addEventListener("click", () =>{
-    let escolha = escolha3.textContent = "PAPEL"
-    console.log(escolha)
-    let escolhaHumana = getHumanChoice(escolha)
-    console.log(escolhaHumana)
-
-    let escolhaComputer = getCommputerChoice(0,3)
-
-    let game = playRound(escolhaHumana,escolhaComputer)
-})
-
-
+        
+        let escolhaComputer = getCommputerChoice(0,3)
+        let p2 = document.createElement('p')
+    
+        p2.textContent = "A escolha do adversário foi  " + escolhaComputer
+        espaco.appendChild(p2)
+        
+    
+        let game = playRound(escolhaHumana,escolhaComputer)
+        console.log(game)
+    
+        let p3 = document.createElement('p')
+        
+        p3.textContent = "O resultado final foi " + game
+        espaco.appendChild(p3)
+    
+        return game
+    
+    
+    
+    
+    
+    })
+    
+    
+    escolha2.addEventListener("click", () =>{
+        let escolha =  "Tesoura"
+        let escolhaHumana = getHumanChoice(escolha)
+        let p1 = document.createElement('p')
+        p1.textContent = "A sua escolha foi " + escolhaHumana
+        espaco.appendChild(p1)
+    
+        
+        let escolhaComputer = getCommputerChoice(0,3)
+        let p2 = document.createElement('p')
+        p2.textContent = "A escolha do adversário foi  " + escolhaComputer
+        espaco.appendChild(p2)
+    
+        let game = playRound(escolhaHumana,escolhaComputer)
+    
+        let p3 = document.createElement('p')
+        p3.textContent = "O resultado final foi " + game
+        espaco.appendChild(p3)
+    
+        return game
+    
+    
+    
+    })
+    
+    escolha3.addEventListener("click", () =>{
+        let escolha =  "Papel"
+        let escolhaHumana = getHumanChoice(escolha)
+        let p1 = document.createElement('p')
+        p1.textContent = "A sua escolha foi " + escolhaHumana
+        espaco.appendChild(p1)
+    
+        
+        let escolhaComputer = getCommputerChoice(0,3)
+        let p2 = document.createElement('p')
+        p2.textContent = "A escolha do adversário foi  " + escolhaComputer
+        espaco.appendChild(p2)
+    
+        let game = playRound(escolhaHumana,escolhaComputer)
+    
+        let p3 = document.createElement('p')
+        p3.textContent = "O resultado final foi " + game
+        espaco.appendChild(p3)
+    
+        return game
+    
+    
+    
+    })
+    
+}
 
 
 
@@ -66,6 +111,7 @@ escolha3.addEventListener("click", () =>{
     }
     /*Pegar a escolha humana. */
     function getHumanChoice (escolha){
+        escolha = escolha.toUpperCase()
         if(escolha === "PEDRA"){
             return "Pedra"
         }else{
@@ -87,18 +133,18 @@ escolha3.addEventListener("click", () =>{
 
     
     if(humanChoise === "TESOURA" && computerChoise === "PAPEL"){
-        return "Você venceu, sua pontuação" + humanScore++
+        return  humanScore++
     }else{
         if(humanChoise === "PEDRA" && computerChoise === "TESOURA"){
-            return "Você venceu, sua pontuação" + humanScore++
+            return  humanScore++
         }else{
             if(humanChoise === "PAPEL" && computerChoise === "PEDRA"){
-                return "Você venceu, sua pontuação" + humanScore++
+                return  humanScore++
             }else{
                 if(humanChoise === computerChoise){
-                    return "Você empatou, a pontuacão ficou" + empate++
+                    return  empate++
                 }else{
-                    return "Você perdeu, a pontuação do seu rival " +  computerScore++
+                    return  computerScore++
                 }
             }
         }
@@ -108,19 +154,11 @@ escolha3.addEventListener("click", () =>{
     let humanScore = 0
     let computerScore = 0
     let empate = 0
-    /*
+    
 //Criar 5 rodadas do jogo. 
     function playGame (num){
         for(let n =0; n < num; n++){
-            let escolhaComputer = getCommputerChoice(0,3)
-            console.log(escolhaComputer)
 
-            let escolha = prompt("Qual a sua escolha ? ")
-            escolha = escolha.toUpperCase()
-            let escolhaHumana = getHumanChoice(escolha)
-            console.log(escolhaHumana)
-
-            let game = playRound(escolhaHumana,escolhaComputer)
         }
         console.log(humanScore)
         console.log(computerScore)
@@ -144,28 +182,16 @@ escolha3.addEventListener("click", () =>{
 
     }
 
-    let escolhaComputer = getCommputerChoice(0,3)
-    console.log(escolhaComputer)
-    
-    
-    let escolha = prompt("Qual a sua escolha ? ")
-        escolha = escolha.toUpperCase()
-    let escolhaHumana = getHumanChoice(escolha)
-    console.log(escolhaHumana)
-
-        let rodada = playRound(escolhaHumana,escolhaComputer)
-    
-    
-    let humanScore = 0
-    let computerScore = 0
-    let empate = 0
 
 
-
-
-
-
-    let play = playGame(5)
     
 
-*/
+
+
+
+
+
+
+
+    
+
